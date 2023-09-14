@@ -1,0 +1,10 @@
+Flow will we be 
+step: 1   
+     request will come to index.js file
+
+step:2
+   all routes will be redirected to routes/index.js
+
+step: 3
+   all the controlers of the request will we written in controlers file
+    

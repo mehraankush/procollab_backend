@@ -1,6 +1,6 @@
 
 
-module.exports.home = function(){
+module.exports.home = function(req,res){
     console.log("hello world");
-    return;
+    res.status(200).json({message:"hello get"});
 }
