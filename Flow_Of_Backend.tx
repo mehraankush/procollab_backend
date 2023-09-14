@@ -6,5 +6,5 @@ step:2
    all routes will be redirected to routes/index.js
 
 step: 3
-   all the controlers of the request will we written in controlers files
+   all the controlers of the request will we written in controlers files hello
     
