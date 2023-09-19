@@ -6,7 +6,16 @@ const projectSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
+    shortdiscription:{
+        type:String,
+        required:true,
+        unique:true
+    },
     category:{
+        type:String,
+        required:true,
+    },
+    theme:{
         type:String,
         required:true,
     },
