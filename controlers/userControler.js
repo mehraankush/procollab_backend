@@ -19,13 +19,13 @@ module.exports.SignupRequest = async function(req,res){
 
         const finsUser = await UserNModel.findOne({email:email});
             if(finsUser){
-                return res.status(404).json({message:finsUser});
+                return res.status(201).json({message:"User Already Exist"});
             }
           
        const user = new UserNModel({username:fullname,email:email,password:password});
        const newUser = await user.save();
 
-        res.status(200).json({message:newUser});
+        res.status(200).json({message:"User Created Succesfully"});
 
     }catch(err){
         console.log("Error In signup",err);
@@ -48,14 +48,15 @@ module.exports.SignInRequest = async function(req,res){
         }
 
         const findUser = await UserNModel.findOne({email:email});
+        // console.log(findUser)
         if(!findUser){
-             res.status(404).json({messahe:"You Don't have account Create one"});
+             res.status(401).json({message:"You Don't have account Create one"});
         }
         if(password != findUser.password){
-             res.status(404).json({Message:"Email Or password is Wrong"});
+             res.status(401).json({Message:"Email Or password is Wrong"});
         }
            
-        res.status(200).json({message:findUser});
+       return res.status(200).json({message:findUser});
 
     }catch(err){
         console.log("Error In signin",err);

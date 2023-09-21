@@ -9,21 +9,20 @@ const projectSchema = new mongoose.Schema({
     shortdiscription:{
         type:String,
         required:true,
-        unique:true
     },
     category:{
         type:String,
-        required:true,
+        required:true,  // hardware/software
     },
     theme:{
         type:String,
-        required:true,
+        required:true,   // web , blockchain etc..
     },
     description:{
         type:String,
         required:true,
     },
-    techstack:[{
+    teckstack:[{
         type:String,
         required:true,
     }],
