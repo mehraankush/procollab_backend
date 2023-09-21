@@ -1,12 +1,14 @@
 const express = require('express')
-const homecontroler = require('../controlers/homecontroler')
 const userControler = require('../controlers/userControler')
+const uploadProjects = require('../controlers/peojectControler')
 const router = express.Router();
 
 
-router.get('/',homecontroler.home);
 router.post('/signup',userControler.SignupRequest);
 router.post('/signin',userControler.SignInRequest);
+
+// upload projects 
+router.post('/uploadprojects',uploadProjects.ProjectUpload);
 
 
 module.exports = router;

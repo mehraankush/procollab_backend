@@ -22,10 +22,10 @@ const projectSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    teckstack:[{
+    teckstack:{
         type:String,
         required:true,
-    }],
+    },
     projectlink:{
         type:String,
         required:true,
@@ -45,9 +45,9 @@ const projectSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    collaborator:[{
+    collaborator:{
         type:String,
-    }],
+    },
     userid:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"user",
@@ -56,4 +56,4 @@ const projectSchema = new mongoose.Schema({
 
 const projectmodel= mongoose.model('project',projectSchema);
 
-module.exports.projectmodel;
+module.exports = projectmodel;
