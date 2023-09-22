@@ -1,10 +1,29 @@
 const express = require('express')
 const bodyParser = require("body-parser")
-const connectDB = require('./db/db.js')
+// const connectDB = require('./db/db.js')
 const app = express();
 const PORT = process.env.PORT || 8000;
-var cors = require('cors')
+var cors = require('cors');
+const  mongoose  = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
+
+const URL = process.env.MONGO_URL;
+// console.log(URL);
+
+const connectDB  = async ()  =>{
+    try{ 
+        await mongoose.connect(URL,{
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+     });
+      console.log('db connected succesfully');
+ 
+    }catch(err){
+      console.log('error while Connecting database',err);
+    }
+ };
 
 connectDB();
 app.use(cors())
