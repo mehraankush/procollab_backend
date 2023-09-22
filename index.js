@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8000;
 var cors = require('cors')
 
 
-await connectDB();
+connectDB();
 app.use(cors())
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.json());
