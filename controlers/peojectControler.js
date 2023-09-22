@@ -71,3 +71,6 @@ module.exports.getAllProjects = async (req,res) =>{
           res.status(404).json({message:err.message});
      }
 }
+module.exports.home = async (req,res) =>{
+    console.log("Hello Viewer");
+}
