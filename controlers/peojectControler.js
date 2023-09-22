@@ -56,7 +56,18 @@ module.exports.ProjectUpload = async function(req,res){
 
     }catch(err){
         console.log("Error In Uploading Project",err);
-       return res.status(404).json({message:err.message})
+       return res.status(404).json({message:err.message});
     }
 
+}
+
+
+module.exports.getAllProjects = async (req,res) =>{
+     try{
+          const AllProjects = await projectmodel.find({});
+          res.status(200).json({message:AllProjects});
+     }catch(err){
+          console.log("Error In Getting Projects",err);
+          res.status(404).json({message:err.message});
+     }
 }

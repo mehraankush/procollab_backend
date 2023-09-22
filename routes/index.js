@@ -11,4 +11,8 @@ router.post('/signin',userControler.SignInRequest);
 router.post('/uploadprojects',uploadProjects.ProjectUpload);
 
 
+
+router.get('/get/projects',uploadProjects.getAllProjects);
+
+
 module.exports = router;
