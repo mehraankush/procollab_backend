@@ -63,7 +63,7 @@ module.exports.ProjectUpload = async function(req,res){
 
 
 module.exports.getAllProjects = async (req,res) =>{
-     try{
+     try{git 
           const AllProjects = await projectmodel.find({});
           res.status(200).json({message:AllProjects});
      }catch(err){
