@@ -72,5 +72,5 @@ module.exports.getAllProjects = async (req,res) =>{
      }
 }
 module.exports.home = async (req,res) =>{
-    console.log("Hello Viewer");
+   res.json({message:"Hello Viewer"});
 }
