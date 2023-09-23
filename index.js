@@ -12,26 +12,15 @@ dotenv.config();
 const URL = process.env.MONGO_URL;
 // console.log(URL);
 
-// const connectDB  = async ()  =>{
-//     try{ 
-//         await mongoose.connect(URL,{
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true,
-//      });
-//       console.log('db connected succesfully');
- 
-//     }catch(err){
-//       console.log('error while Connecting database',err);
-//     }
-//  };
 
   mongoose.connect(
-    process.env.MONGO_URL,
+    URL,
    { useNewUrlParser: true,
     useUnifiedTopology: true,
    })
   .then(()=>console.log('connected'))
   .catch(e=>console.log(e));
+
 // connectDB();
 
 app.use(cors())
