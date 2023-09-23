@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require("body-parser")
-// const connectDB = require('./db/db.js')
+const connectDB = require('./db/db.js')
 const app = express();
 const PORT = process.env.PORT || 8000;
 var cors = require('cors');
@@ -9,19 +9,19 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-const URL = process.env.MONGO_URL;
+// const URL = process.env.MONGO_URL;
 // console.log(URL);
 
 
-  mongoose.connect(
-    URL,
-   { useNewUrlParser: true,
-    useUnifiedTopology: true,
-   })
-  .then(()=>console.log('connected'))
-  .catch(e=>console.log(e));
+  // mongoose.connect(
+  //   URL,
+  //  { useNewUrlParser: true,
+  //   useUnifiedTopology: true,
+  //  })
+  // .then(()=>console.log('connected'))
+  // .catch(e=>console.log(e));
 
-// connectDB();
+connectDB();
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended : true}));
