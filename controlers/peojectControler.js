@@ -1,4 +1,5 @@
 const projectmodel= require('../models/projects')
+const UserModel= require('../models/user')
 
 module.exports.ProjectUpload = async function(req,res){
 
@@ -6,7 +7,7 @@ module.exports.ProjectUpload = async function(req,res){
 
         const { title, shortdiscription ,
             category,theme, description,teckstack ,projectlink,status,
-            universityname,qualification,userid } = req.body;
+            universityname,qualification,userid,photo ,collaborator} = req.body;
 
         console.log(req.body);
 
@@ -44,13 +45,25 @@ module.exports.ProjectUpload = async function(req,res){
              res.status(404).json({Message:"userid is Required"})
         }
 
-        const findUser = await projectmodel.findOne({title:title})
-        if(findUser){
-             res.status(401).json({message:findUser});
+       //   chacking if the project is already exit with the same title 
+        const findProject= await projectmodel.findOne({title:title});
+        if(findProject){
+             res.status(401).json({message:"Project Already exist with same title"});
         }
-          
+        
+        // saving the project
         const project = new projectmodel(req.body);
+        project.photo.push(photo);
         const result = await project.save();
+
+        const findUser = await UserModel.findOne({_id:userid});
+        if(!findUser){
+          res.status(401).json({Message:"userid is not authenticate"});
+        }
+
+       //  saving project id to the user saveprojects array 
+         findUser.savedProjects.push(result._id);
+        await findUser.save();
            
        res.status(200).json({message:result});
 

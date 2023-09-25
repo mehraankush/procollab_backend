@@ -45,6 +45,14 @@ const projectSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    approved:{
+        type:Boolean,
+        default:false,
+    },
+    request:{
+        type:Boolean,
+        default:false,
+    },
     collaborator:{
         type:String,
     },
