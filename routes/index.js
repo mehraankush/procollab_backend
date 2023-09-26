@@ -15,5 +15,8 @@ router.post('/uploadprojects',uploadProjects.ProjectUpload);
 
 router.get('/get/projects',uploadProjects.getAllProjects);
 
+// get project details 
+router.get('/getprojectsdetails/:id',uploadProjects.getProjectsDetails);
+
 
 module.exports = router;

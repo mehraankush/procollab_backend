@@ -4,6 +4,7 @@ const collageSchema = new mongoose.Schema({
     collagename:{
         type:String,
         required:true,
+        unique:true
     },
     Projectids:[{
         type:mongoose.Schema.Types.ObjectId,

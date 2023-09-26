@@ -1,5 +1,6 @@
 const projectmodel= require('../models/projects')
 const UserModel= require('../models/user')
+const CollageModel= require('../models/collage')
 
 module.exports.ProjectUpload = async function(req,res){
 
@@ -64,6 +65,17 @@ module.exports.ProjectUpload = async function(req,res){
        //  saving project id to the user saveprojects array 
          findUser.savedProjects.push(result._id);
         await findUser.save();
+ 
+     //   saving project ids to the university 
+        const collage = CollageModel.findOne({collagename:universityname});
+        if(collage){
+          collage.Projectids.push(result._id);
+          await collage.save();
+        }else{
+          const newCollage = new CollageModel({collagename:universityname});
+          newCollage.Projectids.push(result._id);
+          await newCollage.save();
+        }
            
        res.status(200).json({message:result});
 
@@ -86,4 +98,15 @@ module.exports.getAllProjects = async (req,res) =>{
 }
 module.exports.home = async (req,res) =>{
    res.json({message:"Hello Viewer"});
+}
+
+module.exports.getProjectsDetails = async (req,res) =>{
+     try{
+          console.log(req.params)
+
+          res.status(200).json('hello');
+     }catch(err){
+          console.log("Error In Getting Project details",err);
+          res.status(404).json({message:err.message});
+     }
 }
