@@ -12,14 +12,17 @@ router.post('/signin',userControler.SignInRequest);
 router.post('/uploadprojects',uploadProjects.ProjectUpload);
 
 // admin 
-router.post('/adminsignup',userControler.SignupRequest);
-router.post('/adminsignin',userControler.SignInRequest);
+router.post('/adminsignup',userControler.AdminSignupRequest);
+router.post('/adminsignin',userControler.AdminSignInRequest);
 
 
 router.get('/get/projects',uploadProjects.getAllProjects);
 
 // get project details 
 router.get('/getprojectsdetails/:id',uploadProjects.getProjectsDetails);
+
+// get all university projects 
+router.get('/universityprojects/:id',uploadProjects.getUniversityProjects)
 
 
 module.exports = router;

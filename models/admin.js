@@ -14,10 +14,10 @@ const adminSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    collageId:[{
+    collageId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"collage",
-    }]
+    }
 });
 
 const AdminModel = mongoose.model('admin',adminSchema);

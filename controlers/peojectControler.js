@@ -102,11 +102,38 @@ module.exports.home = async (req,res) =>{
 
 module.exports.getProjectsDetails = async (req,res) =>{
      try{
-          console.log(req.params)
+          const { id } = req.params;
+           const project = await projectmodel.findOne({_id:id});
+           if(!project){
+               res.status(404).json({message:"Project Not found"});
+           }
 
-          res.status(200).json('hello');
+          res.status(200).json(project);
      }catch(err){
           console.log("Error In Getting Project details",err);
           res.status(404).json({message:err.message});
      }
 }
+
+module.exports.getUniversityProjects = async (req,res) =>{
+     try{
+          const {id} = req.params
+          const findCollage = await CollageModel.findOne({_id:id});
+
+          if(!findCollage){
+               res.status(401).json({message:"Collage Does not exist"});
+          }
+
+          // const AllProjects  = await CollageModel.Projectids.find({});
+          const result = findCollage.Projectids;
+          res.status(200).json(result);
+
+     }catch(err){
+          console.log("Error In Getting Project details",err);
+          res.status(404).json({message:err.message});
+     }
+}
+
+// const SavedRecipiesId = await RecipeModel.find({
+//      _id:{$in:user.savedRecipes}
+//  });
