@@ -11,6 +11,9 @@ router.post('/signin',userControler.SignInRequest);
 // upload projects 
 router.post('/uploadprojects',uploadProjects.ProjectUpload);
 
+// admin 
+router.post('/adminsignup',userControler.SignupRequest);
+router.post('/adminsignin',userControler.SignInRequest);
 
 
 router.get('/get/projects',uploadProjects.getAllProjects);
