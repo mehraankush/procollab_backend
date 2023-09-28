@@ -69,7 +69,8 @@ module.exports.ProjectUpload = async function(req,res){
         await findUser.save();
  
      //   saving project ids to the university 
-        const collage = CollageModel.findOne({collagename:universityname});
+        const collage = await CollageModel.findOne({collagename:universityname});
+        console.log(collage);
         if(collage){
           collage.Projectids.push(result._id);
           await collage.save();
