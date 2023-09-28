@@ -128,8 +128,11 @@ module.exports.getUniversityProjects = async (req,res) =>{
           }
 
           // const AllProjects  = await CollageModel.Projectids.find({});
-          const result = findCollage.Projectids;
-          res.status(200).json(result);
+          // const result = findCollage.Projectids;
+          const SavedRecipiesId = await projectmodel.find({
+               _id:{$in:findCollage.Projectids}
+           });
+          res.status(200).json(SavedRecipiesId);
 
      }catch(err){
           console.log("Error In Getting Project details",err);
