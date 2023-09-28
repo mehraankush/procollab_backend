@@ -54,7 +54,9 @@ module.exports.ProjectUpload = async function(req,res){
         
         // saving the project
         const project = new projectmodel(req.body);
-        project.photo.push(photo);
+        if(photo){
+             project.photo.push(photo);
+        }
         const result = await project.save();
 
         const findUser = await UserModel.findOne({_id:userid});
